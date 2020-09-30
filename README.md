@@ -8,7 +8,7 @@ This repo is a clone of https://github.com/miguelgrinberg/flasky
 # Activity 1
 ![Activity 1 Screenshot](/images/ss1.PNG)
 
-#Activity 2
+# Activity 2
 
 Step 1: Run the project and make a screenshot.
 ![Activity 2 Screenshot](/images/ss2.PNG)
@@ -25,4 +25,4 @@ the 2nd field, click submit. (make a screenshot)
 ![Activity 2 Screenshot](/images/ss5.PNG)
 
 
-#Activity 3
+# Activity 3
