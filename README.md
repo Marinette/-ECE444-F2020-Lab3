@@ -8,7 +8,7 @@ This repo is a clone of https://github.com/miguelgrinberg/flasky
 # Activity 1
 ![Activity 1 Screenshot](/images/ss1.PNG)
 
-#Activity 2
+# Activity 2
 
 Step 1: Run the project and make a screenshot.
 ![Activity 2 Screenshot](/images/ss2.PNG)
@@ -26,4 +26,4 @@ the 2nd field, click submit. (make a screenshot)
 
 **Note that the above didn't flash "looks like you changed your name!" because the last step used the same name input.
 
-#Activity 3
+# Activity 3
