@@ -4,6 +4,12 @@
 {% block title %}Flasky{% endblock %}
 {% block page_content %}
 <div class="page-header">
-<h1>Hello, {% if name %}{{ name }}{% else %}Stranger{% endif %}! {% if email %} Your email is {{email}} {% endif %}{% if email and InvalidEmail%} Please enter a valid U of T Email. {%endif%}</h1></div>
+<h1>Hello, {% if name %}{{ name }}{% else %}Stranger{% endif %}! {% if email %} Your email is {{email}} {% endif %}{% if email and InvalidEmail%} Please enter a valid U of T Email. {%endif%}</h1>
+{% if not known %}
+<p>Pleased to meet you!</p>
+{% else %}
+<p>Happy to see you again!</p>
+{% endif %}
+</div>
 {{ wtf.quick_form(form) }}
 {% endblock %}
