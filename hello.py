@@ -1,34 +1,54 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, session, redirect, url_for, flash
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from flask_wtf import Form
 from wtforms import StringField, SubmitField
-from wtforms.validators import Required
+from wtforms.validators import Required, Email
 import datetime
 
 #Object Instantiations
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'roccoladocco253'
+app.config['SECRET_KEY'] = 'oasdasdsd'
 bootstrap = Bootstrap(app)
 moment = Moment(app)
 
 #Class Declarations
-class NameForm(Form):
+class NameEmailForm(Form):
     name = StringField('What is your name?', validators=[Required()])
+    email = StringField('What is your email?', validators=[Email()])
     submit = SubmitField('Submit')
+
+    def NotUTorontoEmail(self,email):
+        if 'utoronto' in email.lower():
+            return False
+        return True
 
 #App Routing
 @app.route('/',methods=['GET','POST'])
 def index():
 
     name = None
-    form = NameForm()
+    form = NameEmailForm()
     if form.validate_on_submit():
-        name = form.name.data
+        old_name = session.get('name')
+        old_email = session.get('email')
+        email = form.email.data
+        #checks
+        if old_name is not None and old_name != form.name.data:
+            flash("It looks like you've changed your name!")
+        if old_email is not None and old_email != form.email.data:
+            flash("It looks like you've changed your email!")
+        if form.NotUTorontoEmail(email):
+            form.email.data = ''
+        #save info in session
+        session['name'] = form.name.data
+        session['email'] = form.email.data
         form.name.data = ''
+        form.email.data = ''
+        return redirect(url_for('index'))
 
-    return render_template('index.html', currentDateTime=datetime.datetime.utcnow(),form=form, name=name)
-    
+    return render_template('index.html', currentDateTime=datetime.datetime.utcnow(),form=form, name=session.get('name'), email=session.get('email'), IsValidEmail = not form.NotUTorontoEmail(session.get('email')))
+
 @app.route('/user/<name>')
 def user(name):
     return render_template('user.html',name=name, currentDateTime=datetime.datetime.utcnow())
