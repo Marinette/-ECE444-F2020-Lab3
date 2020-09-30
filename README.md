@@ -24,6 +24,5 @@ Step 4: Fill in your First name and Last name in the 1st field, and fill in your
 the 2nd field, click submit. (make a screenshot)
 ![Activity 2 Screenshot](/images/ss5.PNG)
 
-**Note that the above didn't flash "looks like you changed your name!" because the last step used the same name input.
 
 #Activity 3

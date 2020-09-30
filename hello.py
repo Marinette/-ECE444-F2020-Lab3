@@ -8,7 +8,7 @@ import datetime
 
 #Object Instantiations
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'oasdasdsd'
+app.config['SECRET_KEY'] = 'sdfasd'
 bootstrap = Bootstrap(app)
 moment = Moment(app)
 
@@ -19,7 +19,7 @@ class NameEmailForm(Form):
     submit = SubmitField('Submit')
 
     def NotUTorontoEmail(self,email):
-        if 'utoronto' in email.lower():
+        if email is not None and 'utoronto' in email.lower():
             return False
         return True
 
@@ -38,8 +38,7 @@ def index():
             flash("It looks like you've changed your name!")
         if old_email is not None and old_email != form.email.data:
             flash("It looks like you've changed your email!")
-        if form.NotUTorontoEmail(email):
-            form.email.data = ''
+
         #save info in session
         session['name'] = form.name.data
         session['email'] = form.email.data
@@ -47,7 +46,7 @@ def index():
         form.email.data = ''
         return redirect(url_for('index'))
 
-    return render_template('index.html', currentDateTime=datetime.datetime.utcnow(),form=form, name=session.get('name'), email=session.get('email'), IsValidEmail = not form.NotUTorontoEmail(session.get('email')))
+    return render_template('index.html', currentDateTime=datetime.datetime.utcnow(),form=form, name=session.get('name'), email=session.get('email'), InvalidEmail = form.NotUTorontoEmail(session.get('email')))
 
 @app.route('/user/<name>')
 def user(name):
