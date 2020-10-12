@@ -2,6 +2,19 @@
 Marinette
 This repo is a clone of https://github.com/miguelgrinberg/flasky
 
+## How to run this lab
+
+### Building Docker
+To build the files, run the command:
+`docker build -t lab4:latest .`
+The dockerfile are located in the base directory with the filename Dockerfile.
+
+### Running Docker
+To run the built image, run the command:
+`docker run -p 5000:5000 lab4`
+
+This will allow you to access the browser at the address:
+`http://0.0.0.0:5000`
 
 ## Screenshot of the docker image running
 ![Activity 1 Screenshot](/images/image1.PNG)
