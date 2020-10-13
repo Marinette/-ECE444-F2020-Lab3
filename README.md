@@ -26,6 +26,6 @@ This will allow you to access the browser at the address:
 ![Activity 2 Screenshot](/images/image3.PNG)
 
 ## Docker vs Virtual Machine
-Docker runs on containers, which are like a virtual machine in a sense that they both take "images" (snapshot of your current computer environment) and upload it so that it can be shared with other people. The difference is that VMs take a snapshot of your entire OS and its resources, whereas containers are just snapshot of running processes.
+Docker runs on containers, which are like a virtual machine in a sense that they both take "images" (snapshot of your current computer environment) and upload it so that it can be shared with other people. The difference is that VMs take a snapshot of your entire OS and its resources, whereas containers are take just enough information from the OS to run the process. As such, containers are much smaller and faster than virtual machines.
 
 
